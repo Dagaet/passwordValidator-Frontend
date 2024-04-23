@@ -14,5 +14,13 @@ describe('FrontEnd password should', () => {
     cy.get("#isValidContainer")
       .should("contain", "Contraseña valida")
       .should("have.css", "background-color", "rgb(92, 201, 88)")
+  }),
+  it('Show a div in red when the password is not valid', () => {
+    cy.get('input').type("Pajarita_")
+    cy.get('#sendButton').click()
+    cy.contains("Contraseña no valida")
+    cy.get("#isValidContainer")
+      .should("contain", "Contraseña no valida")
+      .should("have.css", "background-color", "rgb(255, 147, 111)")
   })
 })
