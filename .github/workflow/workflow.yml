@@ -1,0 +1,42 @@
+name: Deployment cypress testing
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    - uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: Install dependencies
+      run: npm ci
+    - name: Start react server
+    - run: npm start
+      
+
+  e2e:
+    needs: [build]
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          cache: 'npm'
+          node-version: 18
+      - name: Install dependencies
+        run: npm ci
+      - name: E2E tests
+        uses: cypress-io/github-action@v6
+        with:
+          command: npm run cy:run
+          start: npm run start
+          wait-on: http://localhost:3000
