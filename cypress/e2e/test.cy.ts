@@ -6,7 +6,7 @@
 
 describe('FrontEnd password should', () => {
   beforeEach(()=>{
-    cy.visit('http://192.168.0.14:3000')
+    cy.visit('http://localhost:3000')
   })
   it('Show a div in green when the password is valid', () => {
     cy.get('input').type("Pajarita_34")
