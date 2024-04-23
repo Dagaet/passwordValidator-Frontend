@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-expressions */
 
 // Div is shown in green if passord is valid 
 // Div is shown in red if passord is not valid
@@ -22,5 +23,11 @@ describe('FrontEnd password should', () => {
     cy.get("#isValidContainer")
       .should("contain", "Contraseña no valida")
       .should("have.css", "background-color", "rgb(255, 147, 111)")
+  }),
+  it('Clear button should clear the input', () => {
+    cy.get('input').type("Pajarita_")
+    cy.get('#clearButton').click()
+    cy.get('input').should('contain', "")
+    cy.get("#isValidContainer").should("not.exist")
   })
 })
