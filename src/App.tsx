@@ -25,8 +25,12 @@ function App() {
       
     }
     fetchPassword()
-    setpassword("")
     setisVisible(true)
+  }
+
+  const clearInput = () => {
+    setpassword("")
+    setisVisible(false)
   }
 
   useEffect(()=> {
@@ -48,7 +52,7 @@ function App() {
       </div>
       <div className='button-area'>
         <button onClick={(e) => handleSubmit(e)}>Send</button>
-        <button>Clear</button>
+        <button onClick={()=>clearInput()}>Clear</button>
       </div>
           {isVisible ? (<div className={isPassValid ? 'success': 'error'}>{text}</div>): null}
         </div>
