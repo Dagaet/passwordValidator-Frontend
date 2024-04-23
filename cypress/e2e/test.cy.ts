@@ -6,10 +6,17 @@
 
 describe('FrontEnd password should', () => {
   beforeEach(()=>{
-    cy.visit('http://localhost:3000')
+    cy.visit('http://192.168.0.14:3000')
   })
   it('Show a div in green when the password is valid', () => {
     cy.get('input').type("Pajarita_34")
+    cy.intercept("POST", "http://localhost:8080/password", {
+      headers: {
+        'Content-type': 'application/json'
+      },
+      statusCode: 200, 
+      body: 'true'
+    })
     cy.get('#sendButton').click()
     cy.contains("Contraseña valida")
     cy.get("#isValidContainer")
@@ -18,6 +25,13 @@ describe('FrontEnd password should', () => {
   }),
   it('Show a div in red when the password is not valid', () => {
     cy.get('input').type("Pajarita_")
+    cy.intercept("POST", "http://localhost:8080/password", {
+      headers: {
+        'Content-type': 'application/json'
+      },
+      statusCode: 200, 
+      body: 'false'
+    })
     cy.get('#sendButton').click()
     cy.contains("Contraseña no valida")
     cy.get("#isValidContainer")
