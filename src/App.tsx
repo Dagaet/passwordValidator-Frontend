@@ -51,10 +51,10 @@ function App() {
         <input placeholder='password' value={password} onChange={handleInputChange}/>
       </div>
       <div className='button-area'>
-        <button onClick={(e) => handleSubmit(e)}>Send</button>
-        <button onClick={()=>clearInput()}>Clear</button>
+        <button id="sendButton" onClick={(e) => handleSubmit(e)}>Send</button>
+        <button id="clearButton" onClick={()=>clearInput()}>Clear</button>
       </div>
-          {isVisible ? (<div className={isPassValid ? 'success': 'error'}>{text}</div>): null}
+          {isVisible ? (<div id="isValidContainer" className={isPassValid ? 'success': 'error'}>{text}</div>): null}
         </div>
   );
 }
