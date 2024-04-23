@@ -39,6 +39,20 @@ button{
   background-color: #ff936f;
   border: 3px dashed rgb(255, 3, 3);
   border-radius: 50px;
-  width: 500px;
-  height: 300px;
+  width: 180px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.success{
+  background-color: #5cc958;
+  border: 3px dashed rgb(0, 94, 20);
+  border-radius: 50px;
+  width: 180px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

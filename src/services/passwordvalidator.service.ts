@@ -1,5 +1,5 @@
 export const isPasswordValid = async (password: String) => {
-    const requestPath = "http://192.168.0.14:8080/password"
+    const requestPath = "http://localhost:8080/password"
     
     const response = await fetch(requestPath, 
       {method: 'POST', 
